@@ -28,7 +28,65 @@ public class SimpleList {
     	this.list = new int[10];
     	this.count = 0;
     }
-
+    
+    
+    /**
+     * This method appends the integer num to the end of the list. If the list
+     * if full, the list size is increased by 50%.
+     * @param num This is the integer to be appended.
+     */
+    
+    public void append(int num) {
+    	if(count == list.length) {
+    		//make new list that is 50% bigger
+    		int[] newList = new int[(int) ((int)list.length * 1.5)];
+    		//copy over elements from old list
+    		for(int idx = 0; idx < list.length; idx++) {
+    			newList[idx] = list[idx];					
+    		}
+    		list = newList;
+    	}
+    	//add to integer to end of array and increment count
+    	list[count] = num;
+    	count++;
+    }
+    
+    /**
+     * @return The first number in the list (or -1 if it is empty).
+     */
+    
+    public int first() {
+    	int result;
+    	if(count == 0) {
+    		result = -1;
+    	}else {
+    		result = list[0];
+    	}
+    	return result;
+    }
+    
+    /**
+     * @return The last number in the list (or -1 if it is empty).
+     */
+    
+    public int last() {
+    	int result;
+    	if(count == 0) {
+    		result = -1;
+    	}else {
+    		result = list[count - 1];
+    	}
+    	return result;
+    }
+    
+    /**
+     * @return The number of possible locations in the list.
+     */
+    
+    public int size() {
+    	return list.length;
+    }
+    
     /**
      * add takes an integer and adds it to the front of the list. All elements
      * already in the list are shifted to the right. If the list is already at
